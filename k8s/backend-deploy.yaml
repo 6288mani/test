@@ -15,14 +15,26 @@ spec:
         app: portfolio-backend
     spec:
       containers:
-      - name: backend
-        image: portfolio-backend:latest
-        imagePullPolicy: Never # Uses the image built locally by Docker/Jenkins
-        ports:
-        - containerPort: 5000
-        env:
-        - name: PORT
-          value: "5000"
+        - name: backend
+          image: portfolio-backend:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          env:
+            - name: PORT
+              value: "5000"
+            - name: RESEND_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: RESEND_API_KEY
 ---
 apiVersion: v1
 kind: Service
