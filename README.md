@@ -1,12 +1,14 @@
-
-## Project Structure
+## Projects Structure
 ```text
 .
-|-- README.md
+|-- ReadMe.md
 |-- backend
+|   |-- Dockerfile
 |   |-- package.json
 |   `-- server.js
+|-- docker-compose.yml
 `-- frontend
+    |-- Dockerfile
     |-- index.html
     |-- package.json
     |-- public
@@ -36,5 +38,5 @@
     |-- style.css
     `-- vite.config.js
 
-6 directories, 27 files
+6 directories, 30 files
 ```
